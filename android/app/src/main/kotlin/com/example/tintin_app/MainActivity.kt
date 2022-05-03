@@ -1,4 +1,4 @@
-package com.udiary.adventureoftintin
+package com.chathuranga.adventureoftintin
 
 import androidx.annotation.NonNull;
 import io.flutter.embedding.android.FlutterActivity

@@ -1,13 +1,11 @@
-class GridViewModel {
-  String img_id;
+class GridViewModelTitle {
   int imgid;
+  String imgUrl;
 
-  String imgname;
+  GridViewModelTitle({
 
-  GridViewModel({
-    this.img_id,
     this.imgid,
-    this.imgname});
+    this.imgUrl});
 
 }
 
