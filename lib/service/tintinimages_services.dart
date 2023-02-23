@@ -13,7 +13,7 @@ class TintinServeces{
 
 
   Future<ApiResponse<List<GridViewModel>>> getimgList(){
-    return http.get(API + '/tintinimages', headers:headers).then((data){
+    return http.get(Uri.parse(API + '/tintinimages') , headers:headers).then((data){
         // if(data.body!=null){
         //       final jsonDate = json.decode(data.body);
         //       final gridview =<GridViewModel>[];

@@ -1,6 +1,7 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:tintin_app/screen/fullscreen.dart';
 import 'package:tintin_app/service/utils.dart';
 
 import '../service/tintinimages_services.dart';
@@ -46,7 +47,8 @@ class _TitlesState extends State<Titles> {
                       ),
 
                       onTap: () =>  {
-                        Navigator.of(context).push(MaterialPageRoute(builder: (context) => GridViewPage(imgid: getimgTitles()[index].imgid)))
+                        // Navigator.of(context).push(MaterialPageRoute(builder: (context) => GridViewPage(imgid: getimgTitles()[index].imgid)))
+                        this._showDialog(context,getimgTitles()[index].imgid)
                       }
                   );
                 },
@@ -55,5 +57,16 @@ class _TitlesState extends State<Titles> {
 
       ),
     );
+  }
+
+
+  void _showDialog(BuildContext context,int index) {
+    // flutter defined function
+
+    Navigator.push(context, MaterialPageRoute(builder: (context) {
+      List<FractionalOffset> fractionalOffsets = new List<FractionalOffset>();
+      fractionalOffsets.add(FractionalOffset(1.0, 0.0));
+      return FullscreenImage(fractionalOffsets:fractionalOffsets,indexImg:1,indexTitle:index);
+    }));
   }
 }

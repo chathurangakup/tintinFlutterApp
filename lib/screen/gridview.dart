@@ -137,7 +137,7 @@ class _GridViewPageState extends State<GridViewPage> {
                   padding: EdgeInsets.all(10.0),
                   child: GridView.builder(
                     itemCount:gridImageStoryArray.length ,
-                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 3, crossAxisSpacing: 2.0, mainAxisSpacing: 2.0),
+                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2, crossAxisSpacing: 2.0, mainAxisSpacing: 2.0),
                     itemBuilder: (BuildContext context, int index){
                       return GestureDetector(
                         child: Image.network(gridImageStoryArray[index].imageUrl),

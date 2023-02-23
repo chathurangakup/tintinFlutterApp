@@ -6,7 +6,7 @@ class AdHelper {
     if (Platform.isAndroid) {
       return 'ca-app-pub-2295070264667994/2282315696';
     } else if (Platform.isIOS) {
-      return 'ca-app-pub-3940256099942544/2934735716';
+      return 'ca-app-pub-2295070264667994/2282315696';
     } else {
       throw new UnsupportedError('Unsupported platform');
     }
@@ -14,9 +14,9 @@ class AdHelper {
 
   static String get interstitialAdUnitId {
     if (Platform.isAndroid) {
-      return "ca-app-pub-2295070264667994/1837223446";
+      return "ca-app-pub-3940256099942544/1033173712";
     } else if (Platform.isIOS) {
-      return "ca-app-pub-3940256099942544/4411468910";
+      return "	ca-app-pub-3940256099942544/1033173712";
     } else {
       throw new UnsupportedError("Unsupported platform");
     }

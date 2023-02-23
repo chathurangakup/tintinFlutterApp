@@ -39,6 +39,7 @@ class _FullStateImageState extends State<FullscreenImage>{
   List<ImageStoryArr> gridImageStoryArray=[];
 
 
+
   // TODO: Add _interstitialAd
   InterstitialAd _interstitialAd;
 
@@ -199,6 +200,7 @@ class _FullStateImageState extends State<FullscreenImage>{
                                     setState(() {
                                       number = number -1 ;
                                     });
+
                                     if (_isInterstitialAdReady) {
                                       _interstitialAd?.show();
                                     }
