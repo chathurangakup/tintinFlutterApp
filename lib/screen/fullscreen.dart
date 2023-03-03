@@ -89,6 +89,8 @@ class _FullStateImageState extends State<FullscreenImage>{
     _loadInterstitialAd();
 
     _getImageData();
+
+
   }
 
   _getImageData() async{
@@ -167,11 +169,13 @@ class _FullStateImageState extends State<FullscreenImage>{
                           transform: Matrix4.diagonal3Values(_zoom, _zoom, 2.0) + Matrix4.translationValues(_offset.dx, _offset.dy, 0.0),
                           child:
                           CachedNetworkImage(
+                            fadeInDuration: const Duration(milliseconds: 700),
                             imageUrl: gridImageStoryArray[number].imageUrl,
                             placeholder: (context, url) => CircularProgressIndicator(),
                             errorWidget: (context, url, error) => Icon(Icons.error),
+
                           ),
-                          //  Image.network('https://cryptic-citadel-37133.herokuapp.com/img$number.jpg')
+                           //Image.network(gridImageStoryArray[number].imageUrl)
                         ),
                       ),
                     ),
@@ -181,64 +185,75 @@ class _FullStateImageState extends State<FullscreenImage>{
                       child:  Row(
                         children: <Widget>[
                           Expanded(
-                            child:RaisedButton(
-                                shape: new RoundedRectangleBorder(
-                                    borderRadius: new BorderRadius.circular(18.0),
-                                    side: BorderSide(color: Colors.red)),
-                                child: Text("Prev",
+                            child:ElevatedButton(
+                              onPressed: () {
+                                if(number<=0){
+
+                                }else{
+                                  setState(() {
+                                    number = number -1 ;
+                                  });
+
+                                  if (_isInterstitialAdReady) {
+                                    _interstitialAd?.show();
+                                  }
+                                  print(number);
+                                }
+                              },
+                              style: ElevatedButton.styleFrom(
+                                  padding: EdgeInsets.symmetric(horizontal: 35.0, vertical: 10.0),
+                                  shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(10.0)
+                                  ),
+                                  primary: Colors.purple
+                              ),
+
+
+                              child:Text("Prev",
                                   textDirection: TextDirection.ltr,
                                   style: TextStyle(
                                     fontSize: 20.0,
                                   ),
-                                ),
-                                color: Colors.red,
-                                textColor: Colors.white,
-                                onPressed:(){
-                                  if(number<=0){
 
-                                  }else{
-                                    setState(() {
-                                      number = number -1 ;
-                                    });
+                            )
+                            )
 
-                                    if (_isInterstitialAdReady) {
-                                      _interstitialAd?.show();
-                                    }
-                                    print(number);
-                                  }
-                                }
-                            ),
                           ),
 
                           Container(width: 30.0),
 
                           Expanded(
-                              child:RaisedButton(
-                                  shape: new RoundedRectangleBorder(
-                                      borderRadius: new BorderRadius.circular(18.0),
-                                      side: BorderSide(color: Colors.red)),
-                                  child:  Text("Next",
-                                    textDirection: TextDirection.rtl,
-                                    style: TextStyle(
-                                      fontSize: 20.0,
-                                    ),
+                              child:ElevatedButton(
+                                  onPressed: () {
+                                          if(number>gridImageStoryArray.length-2 ){
+
+                                          }else{
+                                            setState(() {
+                                              number = number +1 ;
+                                            });
+
+                                            if (_isInterstitialAdReady) {
+                                              _interstitialAd?.show();
+                                            }
+                                            print(number);
+                                          }
+                                  },
+                                  style: ElevatedButton.styleFrom(
+                                      padding: EdgeInsets.symmetric(horizontal: 35.0, vertical: 10.0),
+                                      shape: RoundedRectangleBorder(
+                                          borderRadius: BorderRadius.circular(10.0)
+                                      ),
+                                      primary: Colors.purple
                                   ),
-                                  color: Colors.red,
-                                  textColor: Colors.white,
-                                  onPressed:(){
-                                    if(number>gridImageStoryArray.length-2 ){
 
-                                    }else{
-                                      setState(() {
-                                        number = number +1 ;
-                                      });
 
-                                      if (_isInterstitialAdReady) {
-                                        _interstitialAd?.show();
-                                      }
-                                      print(number);
-                                    }
-                                  }
+                                  child:Text("Next",
+                                          textDirection: TextDirection.rtl,
+                                          style: TextStyle(
+                                            fontSize: 20.0,
+                                          ),
+
+                                  )
                               )
                           )
                         ],
@@ -247,17 +262,7 @@ class _FullStateImageState extends State<FullscreenImage>{
                   ],
                 ),
               )
-//        Padding(
-//            padding: const EdgeInsets.all(8.0),
-//            child:
-//            Image.network('https://cryptic-citadel-37133.herokuapp.com/img0.jpg'),
-//
-//        )
           )
-
-
-
-
       );
     }else{
 // is landscape
@@ -275,39 +280,40 @@ class _FullStateImageState extends State<FullscreenImage>{
 
                   children: <Widget>[
                     Expanded(
-                      child:RaisedButton(
-                          shape: new RoundedRectangleBorder(
-                              borderRadius: new BorderRadius.circular(18.0),
-                              side: BorderSide(color: Colors.red)),
-                          child: Text("Prev",
-                            textDirection: TextDirection.ltr,
-                            style: TextStyle(
-                              fontSize: 20.0,
+                      child:ElevatedButton(
+                          onPressed: () {
+                                  if(number<=0 ){
+
+                                  }else{
+                                    setState(() {
+                                      number = number -1 ;
+
+                                    });
+                                    if (_isInterstitialAdReady) {
+                                      _interstitialAd?.show();
+                                    }
+                                    print(number);
+                                  }
 
 
-                            ),
+                          },
+                          style: ElevatedButton.styleFrom(
+                              padding: EdgeInsets.symmetric(horizontal: 35.0, vertical: 10.0),
+                              shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(10.0)
+                              ),
+                              primary: Colors.purple
                           ),
-                          color: Colors.red,
-                          textColor: Colors.white,
-                          onPressed:(){
-                            if(number<=0 ){
-
-                            }else{
-                              setState(() {
-                                number = number -1 ;
-
-                              });
-                              if (_isInterstitialAdReady) {
-                                _interstitialAd?.show();
-                              }
-                              print(number);
-                            }
-
-                          }
-
-                      ),
 
 
+                          child:Text("Prev",
+                                  textDirection: TextDirection.ltr,
+                                  style: TextStyle(
+                                    fontSize: 20.0,
+                                  ),
+
+                          )
+                      )
 
                     ),
                     Container(
@@ -359,24 +365,19 @@ class _FullStateImageState extends State<FullscreenImage>{
             transform: Matrix4.diagonal3Values(_zoom, _zoom, 2.0) + Matrix4.translationValues(_offset.dx, _offset.dy, 0.0),
             child:
             CachedNetworkImage(
+
+              maxHeightDiskCache: 100,
+              maxWidthDiskCache: 100,
               imageUrl: gridImageStoryArray[number].imageUrl,
               placeholder: (context, url) => CircularProgressIndicator(),
               errorWidget: (context, url, error) => Icon(Icons.error),
 
             ),
-
-
-            //  Image.network('https://cryptic-citadel-37133.herokuapp.com/img$number.jpg')
-
-
           ),
 
 
         ),
       ),
-
-
-
 
                     Container(
                         width:100.0,
@@ -385,142 +386,43 @@ class _FullStateImageState extends State<FullscreenImage>{
                     ),
 
                     Expanded(
-                     child: RaisedButton(
-                      shape: new RoundedRectangleBorder(
-                          borderRadius: new BorderRadius.circular(18.0),
-                          side: BorderSide(color: Colors.red)),
+                     child:ElevatedButton(
+                         onPressed: () {
+                                 if(number>gridImageStoryArray.length-2 ){
 
-                      child:  Text("Next",
-                        textDirection: TextDirection.rtl,
-                        style: TextStyle(
-                          fontSize: 10.0,
+                                 }else{
+                                   setState(() {
+                                     number = number +1 ;
 
-                        ),
-                      ),
-                      color: Colors.red,
-                      textColor: Colors.white,
-                      onPressed:(){
-                        if(number>gridImageStoryArray.length-2 ){
+                                   });
+                                   if (_isInterstitialAdReady) {
+                                     _interstitialAd?.show();
+                                   }
+                                   print(number);
+                                 }
+                         },
+                         style: ElevatedButton.styleFrom(
+                             padding: EdgeInsets.symmetric(horizontal: 35.0, vertical: 10.0),
+                             shape: RoundedRectangleBorder(
+                                 borderRadius: BorderRadius.circular(10.0)
+                             ),
+                             primary: Colors.purple
+                         ),
 
-                        }else{
-                          setState(() {
-                            number = number +1 ;
 
-                          });
-                          if (_isInterstitialAdReady) {
-                            _interstitialAd?.show();
-                          }
-                          print(number);
-                        }
+                         child: Text("Next",
+                                 textDirection: TextDirection.rtl,
+                                 style: TextStyle(
+                                   fontSize: 20.0
+                                 ),
 
-                      }
-
+                         )
+                     )
                   )
-                                        ,
-                  )
-
-
-
-
-
-
-
-
-//                    Padding(
-//                      padding:const EdgeInsets.all(1.0),
-//
-//                      child:  Row(
-//
-//                        children: <Widget>[
-//                          Expanded(
-//                            child:RaisedButton(
-//                                shape: new RoundedRectangleBorder(
-//                                    borderRadius: new BorderRadius.circular(18.0),
-//                                    side: BorderSide(color: Colors.red)),
-//                                child: Text("Prev",
-//                                  textDirection: TextDirection.ltr,
-//                                  style: TextStyle(
-//                                    fontSize: 20.0,
-//
-//
-//                                  ),
-//                                ),
-//                                color: Colors.red,
-//                                textColor: Colors.white,
-//                                onPressed:(){
-//                                  if(number<=0 ){
-//
-//                                  }else{
-//                                    setState(() {
-//                                      number = number -1 ;
-//
-//                                    });
-//                                    print(number);
-//                                  }
-//
-//                                }
-//
-//                            ),
-//
-//
-//
-//                          ),
-//
-//                          Container(width: 30.0),
-//
-//                          Expanded(
-//
-//                              child:RaisedButton(
-//                                  shape: new RoundedRectangleBorder(
-//                                      borderRadius: new BorderRadius.circular(18.0),
-//                                      side: BorderSide(color: Colors.red)),
-//                                  child:  Text("Next",
-//                                    textDirection: TextDirection.rtl,
-//                                    style: TextStyle(
-//                                      fontSize: 20.0,
-//
-//                                    ),
-//                                  ),
-//                                  color: Colors.red,
-//                                  textColor: Colors.white,
-//                                  onPressed:(){
-//                                    if(number>62 ){
-//
-//                                    }else{
-//                                      setState(() {
-//                                        number = number +1 ;
-//
-//                                      });
-//                                      print(number);
-//                                    }
-//
-//                                  }
-//
-//                              )
-//
-//
-//
-//                          )
-//                        ],
-//
-//                      ),
-//                    )
-
-
                   ],
                 ),
               )
-//        Padding(
-//            padding: const EdgeInsets.all(8.0),
-//            child:
-//            Image.network('https://cryptic-citadel-37133.herokuapp.com/img0.jpg'),
-//
-//        )
           )
-
-
-
-
       );
     }
 
@@ -554,29 +456,29 @@ class _FullStateImageState extends State<FullscreenImage>{
     });
   }
 
-  List<Widget> _getOverlays(BuildContext context) {
-    return widget.fractionalOffsets
-        .asMap()
-        .map((i, fo) => MapEntry(
-        i,
-        Align(
-            alignment: fo,
-            child: _buildIcon((i + 1).toString(), context)
-        )
-    ))
-        .values
-        .toList();
-  }
+  // List<Widget> _getOverlays(BuildContext context) {
+  //   return widget.fractionalOffsets
+  //       .asMap()
+  //       .map((i, fo) => MapEntry(
+  //       i,
+  //       Align(
+  //           alignment: fo,
+  //           child: _buildIcon((i + 1).toString(), context)
+  //       )
+  //   ))
+  //       .values
+  //       .toList();
+  // }
 
-  Widget _buildIcon(String indexText, BuildContext context) {
-    return FlatButton.icon(
-      icon: Icon(Icons.location_on, color: Colors.red),
-      label: Text(
-        indexText,
-        style: TextStyle(color: Colors.red, fontWeight: FontWeight.bold),
-      ),
-    );
-  }
+  // Widget _buildIcon(String indexText, BuildContext context) {
+  //   return FlatButton.icon(
+  //     icon: Icon(Icons.location_on, color: Colors.red),
+  //     label: Text(
+  //       indexText,
+  //       style: TextStyle(color: Colors.red, fontWeight: FontWeight.bold),
+  //     ),
+  //   );
+  // }
 
   Widget _buildCircleIcon(String indexText) {
     return Container(
