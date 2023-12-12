@@ -16,7 +16,7 @@ import 'fullscreen.dart';
 
 class GridViewPage extends StatefulWidget{
   final int imgid;
-   GridViewPage({Key key,this.imgid}) : super(key: key);
+   GridViewPage({Key? key,required this.imgid}) : super(key: key);
   _GridViewPageState createState()=> _GridViewPageState();
 }
 
@@ -27,7 +27,7 @@ class _GridViewPageState extends State<GridViewPage> {
   bool isLoading =false;
   List<ImageStoryArr> gridImageStoryArray=[];
   // TODO: Add _bannerAd
-  BannerAd _bannerAd;
+  late BannerAd _bannerAd;
   // TODO: Add _isBannerAdReady
   bool _isBannerAdReady = false;
 
@@ -143,12 +143,8 @@ class _GridViewPageState extends State<GridViewPage> {
                         child: Image.network(gridImageStoryArray[index].imageUrl),
                         onTap: () =>  this._showDialog(context,gridImageStoryArray[index].imgid)
                       );
-
-
                     },
-
                   ));
-        
             }),
 
     ),
@@ -159,9 +155,9 @@ class _GridViewPageState extends State<GridViewPage> {
     // flutter defined function
 
     Navigator.push(context, MaterialPageRoute(builder: (context) {
-      List<FractionalOffset> fractionalOffsets = new List<FractionalOffset>();
+      List<FractionalOffset> fractionalOffsets = [];
       fractionalOffsets.add(FractionalOffset(1.0, 0.0));
-      return FullscreenImage(fractionalOffsets:fractionalOffsets,indexImg:index,indexTitle:widget.imgid);
+      return FullscreenImage(fractionalOffsets:fractionalOffsets,indexImg:index,indexTitle:widget.imgid, key: null,);
     }));
   }
 

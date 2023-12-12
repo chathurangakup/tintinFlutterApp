@@ -47,7 +47,7 @@ class _TitlesState extends State<Titles> {
                       ),
 
                       onTap: () =>  {
-                        // Navigator.of(context).push(MaterialPageRoute(builder: (context) => GridViewPage(imgid: getimgTitles()[index].imgid)))
+                       // Navigator.of(context).push(MaterialPageRoute(builder: (context) => GridViewPage(imgid: getimgTitles()[index].imgid)))
                         this._showDialog(context,getimgTitles()[index].imgid)
                       }
                   );
@@ -64,9 +64,10 @@ class _TitlesState extends State<Titles> {
     // flutter defined function
 
     Navigator.push(context, MaterialPageRoute(builder: (context) {
-      List<FractionalOffset> fractionalOffsets = new List<FractionalOffset>();
+      List<FractionalOffset> fractionalOffsets = [];
+      // List<FractionalOffset> fractionalOffsets = new List<FractionalOffset>();
       fractionalOffsets.add(FractionalOffset(1.0, 0.0));
-      return FullscreenImage(fractionalOffsets:fractionalOffsets,indexImg:1,indexTitle:index);
+      return FullscreenImage(fractionalOffsets:fractionalOffsets,indexImg:1,indexTitle:index, key: null,);
     }));
   }
 }

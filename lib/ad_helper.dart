@@ -16,7 +16,7 @@ class AdHelper {
     // ca-app-pub-2295070264667994/1837223446 add unit
     // ca-app-pub-3940256099942544/1033173712 test add unit
     if (Platform.isAndroid) {
-      return "ca-app-pub-3940256099942544/1033173712";
+      return "ca-app-pub-2295070264667994/1837223446";
     } else if (Platform.isIOS) {
       return "ca-app-pub-2295070264667994/1837223446";
     } else {

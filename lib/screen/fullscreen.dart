@@ -18,7 +18,7 @@ class FullscreenImage extends StatefulWidget{
 
   final int indexImg;
   final int indexTitle;
-  FullscreenImage({Key key, this.fractionalOffsets,this.indexImg, this.indexTitle}) : super(key: key);
+  FullscreenImage({required Key? key, required this.fractionalOffsets,required this.indexImg, required this.indexTitle}) : super(key: key);
   //FullscreenImage(this.fractionalOffsets,this.index);
 
   _FullStateImageState  createState()=>new  _FullStateImageState();
@@ -26,11 +26,11 @@ class FullscreenImage extends StatefulWidget{
 }
 
 class _FullStateImageState extends State<FullscreenImage>{
-  Offset _startingFocalPoint;
-  Offset _previousOffset;
+  late Offset _startingFocalPoint;
+  late Offset _previousOffset;
   Offset _offset = Offset.zero;
 
-  double _previousZoom;
+  late double _previousZoom;
   double _zoom = 1.0;
   int number=1;
 
@@ -41,7 +41,7 @@ class _FullStateImageState extends State<FullscreenImage>{
 
 
   // TODO: Add _interstitialAd
-  InterstitialAd _interstitialAd;
+  late InterstitialAd _interstitialAd;
 
   // TODO: Add _isInterstitialAdReady
   bool _isInterstitialAdReady = false;
@@ -213,6 +213,7 @@ class _FullStateImageState extends State<FullscreenImage>{
                                   textDirection: TextDirection.ltr,
                                   style: TextStyle(
                                     fontSize: 20.0,
+                                      color: Colors.white
                                   ),
 
                             )
@@ -251,6 +252,7 @@ class _FullStateImageState extends State<FullscreenImage>{
                                           textDirection: TextDirection.rtl,
                                           style: TextStyle(
                                             fontSize: 20.0,
+                                            color: Colors.white
                                           ),
 
                                   )
@@ -310,6 +312,7 @@ class _FullStateImageState extends State<FullscreenImage>{
                                   textDirection: TextDirection.ltr,
                                   style: TextStyle(
                                     fontSize: 20.0,
+                                      color: Colors.white
                                   ),
 
                           )

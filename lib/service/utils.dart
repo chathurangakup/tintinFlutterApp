@@ -36,7 +36,6 @@ class TinTinImages{
       "imgid":8,
       "imageUrl":'https://lh5.googleusercontent.com/OvevPOAuCVwCxkAnynNrCCJjIbqPZeZrObhnHw6Qwz3SCUSZ5IcA_AGpEkas_n_ik7s=w2400',
     },
-
   ];
 
 

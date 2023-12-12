@@ -1,11 +1,10 @@
-class GridViewModelTitle {
+class GridViewModelTitleNew {
   int imgid;
   String imgUrl;
 
-  GridViewModelTitle({
+  GridViewModelTitleNew({
 
     required this.imgid,
     required this.imgUrl});
 
 }
-

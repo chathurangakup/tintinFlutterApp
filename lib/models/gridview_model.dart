@@ -8,9 +8,9 @@ class GridViewModel {
   String imgname;
 
   GridViewModel({
-    this.img_id,
-    this.imgid,
-    this.imgname});
+    required this.img_id,
+    required this.imgid,
+    required this.imgname});
 
 }
 
@@ -23,8 +23,8 @@ String imageArrayToJson(ImageArray data) => json.encode(data.toJson());
 
 class ImageArray {
   ImageArray({
-    this.imgtitleid,
-    this.imageStoryArr,
+    required this.imgtitleid,
+    required this.imageStoryArr,
   });
 
   int imgtitleid;
@@ -43,8 +43,8 @@ class ImageArray {
 
 class ImageStoryArr {
   ImageStoryArr({
-    this.imgid,
-    this.imageUrl,
+    required this.imgid,
+    required this.imageUrl,
   });
 
   int imgid;
